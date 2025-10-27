@@ -10,4 +10,9 @@ public class MainMenuManager : MonoBehaviour
         // Load the main game scene
         SceneManager.LoadScene("DaGame");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
