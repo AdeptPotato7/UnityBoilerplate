@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(StaminaManager))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
@@ -20,9 +21,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
-
+    private StaminaManager stamina;
     private bool canMove = true;
-
+    private bool isRunning;
+    private void Awake()
+    {
+        stamina = GetComponent<StaminaManager>();
+    }
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -32,12 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        HandleMovement();
+
         if (!gameManager.gamePaused)
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
 
-            bool isRunning = Input.GetKey(KeyCode.LeftShift);
             float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
             float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
             float movementDirectionY = moveDirection.y;
@@ -80,6 +86,32 @@ public class PlayerMovement : MonoBehaviour
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
                 transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
             }
+        }
+    }
+
+    private void HandleMovement()
+    {
+        bool wantsToSprint = Input.GetKey(KeyCode.LeftShift);
+        isRunning = wantsToSprint && !stamina.IsDepleted();
+        if (wantsToSprint && moveDirection.magnitude > 0 && !stamina.IsDepleted())
+        {
+            if (!stamina.CanUseStamina(stamina.depletionRate * Time.deltaTime))
+            {
+                // Not enough stamina, go back to walking
+                isRunning = false;
+                characterController.Move(moveDirection * walkSpeed * Time.deltaTime);
+            }
+            else
+            {
+                stamina.UseStaminaContinuous(Time.deltaTime);
+                characterController.Move(moveDirection * runSpeed * Time.deltaTime);
+                isRunning = true;
+            }
+        }
+        else
+        {
+            isRunning = false;
+            characterController.Move(moveDirection * walkSpeed * Time.deltaTime);
         }
     }
 }
