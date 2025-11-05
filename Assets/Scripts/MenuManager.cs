@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+  
    public void Play()
    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DaGame");
+        SceneManager.LoadScene("DaGame");
+     
    }
 
     public void Quit()

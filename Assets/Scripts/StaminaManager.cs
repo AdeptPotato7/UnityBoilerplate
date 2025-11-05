@@ -18,7 +18,7 @@ public class StaminaManager : MonoBehaviour
 
     private float lastUsedTime;
     private bool isRegenerating;
-
+    public ProgressBar Pb;
     // Event for UI updates
     public event Action<float, float> OnStaminaChanged; //current, max
     public event Action OnStaminaDepleted;
@@ -27,8 +27,16 @@ public class StaminaManager : MonoBehaviour
     private void Awake()
     {
         currentStamina = maxStamina;
+        UpdateUi();
     }
 
+    private void UpdateUi()
+    {
+        if (Pb != null)
+        {
+            Pb.BarValue = GetStaminaPercentage() * 100f;
+        }
+    }
     private void Update()
     {
         HandleRegeneration();
@@ -45,8 +53,8 @@ public class StaminaManager : MonoBehaviour
 
             currentStamina += regenRate * Time.deltaTime;
             currentStamina = Mathf.Min(currentStamina, maxStamina);
-
             OnStaminaChanged?.Invoke(currentStamina, maxStamina);
+            UpdateUi();
 
             if (currentStamina >= maxStamina)
             {
@@ -63,8 +71,8 @@ public class StaminaManager : MonoBehaviour
             currentStamina -= amount;
             lastUsedTime = Time.time;
             isRegenerating = false;
-
             OnStaminaChanged?.Invoke(currentStamina, maxStamina);
+            UpdateUi();
 
             if (currentStamina <=0)
             {
@@ -102,6 +110,7 @@ public class StaminaManager : MonoBehaviour
     {
         currentStamina = maxStamina;
         OnStaminaChanged.Invoke(currentStamina, maxStamina);
+        UpdateUi();
     }
 
     internal bool CanUseStamina(object p)
