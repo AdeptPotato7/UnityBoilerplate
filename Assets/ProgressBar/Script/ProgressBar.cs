@@ -50,11 +50,27 @@ public class ProgressBar : MonoBehaviour
 
     private void Awake()
     {
-        bar = transform.Find("Bar").GetComponent<Image>();
-        barBackground = GetComponent<Image>();
-        txtTitle = transform.Find("Text").GetComponent<Text>();
-        barBackground = transform.Find("BarBackground").GetComponent<Image>();
+        Transform barTransform = transform.Find("Bar");
+        if (barTransform != null)
+            bar = barTransform.GetComponent<Image>();
+        else
+            Debug.LogError("ProgressBar: Could not find child 'Bar'");
+
+        Transform textTransform = transform.Find("Text");
+        if (textTransform != null)
+            txtTitle = textTransform.GetComponent<Text>();
+        else
+            Debug.LogError("ProgressBar: Could not find child 'Text'");
+
+        Transform bgTransform = transform.Find("BarBackground");
+        if (bgTransform != null)
+            barBackground = bgTransform.GetComponent<Image>();
+        else
+            Debug.LogError("ProgressBar: Could not find child 'BarBackground'");
+
         audiosource = GetComponent<AudioSource>();
+        if (audiosource == null)
+            Debug.LogWarning("ProgressBar: No AudioSource found (optional)");
     }
 
     private void Start()
@@ -75,18 +91,27 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateValue(float val)
     {
-        bar.fillAmount = val / 100;
-        txtTitle.text = Title + " " + val + "%";
-
-        if (Alert >= val)
+        if (bar != null)
         {
-            bar.color = BarAlertColor;
-        }
-        else
-        {
-            bar.color = BarColor;
+            bar.fillAmount = val / 100;
         }
 
+        if (txtTitle != null)
+        {
+            txtTitle.text = Title + " " + val + "%";
+        }
+
+        if (bar != null)
+        {
+            if (Alert >= val)
+            {
+                bar.color = BarAlertColor;
+            }
+            else
+            {
+                bar.color = BarColor;
+            }
+        }
     }
 
 
