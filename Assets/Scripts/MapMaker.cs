@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MapMaker : MonoBehaviour {
 
+    public GameObject player;
+
     public GameObject spawn;
     public GameObject noRoom;
     public GameObject EmptyRoom;
@@ -44,7 +46,10 @@ public class MapMaker : MonoBehaviour {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
         };
         for (int i = 0; i < Z; i++)
-            for (int j = 0; j < X; j++)
+            for (int j = 0; j < X; j++) {
                 Instantiate(rooms[board[i, j]], new Vector3(startX + 10 * j, 0, startZ + 10 * i), new Quaternion(0, 0, 0, 0));
+                if (board[i, j] == 1)
+                    Instantiate(player, new Vector3(startX + 10 * j, 1, startZ + 10 * i), new Quaternion(0, 0, 0, 0));
+            }
     }
 }

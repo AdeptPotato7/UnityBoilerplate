@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbd7031bebf35c4eaec304a8cbba626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
   spawn: {fileID: 1101014062288618203, guid: 8f48fa56cf8be3b478adbdb47880f7bd, type: 3}
   noRoom: {fileID: 3540048890004425043, guid: 6bb8c46a2cc32b145b71535df3dd57b5, type: 3}
   EmptyRoom: {fileID: 3052209126661344979, guid: b0d238c0c6ff2594cb991bf9e3408a3a, type: 3}
