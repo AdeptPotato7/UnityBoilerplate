@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     public Camera playerCamera;
-    public float walkSpeed = 3f;
-    public float runSpeed = 5;
+    public float setWalkSpeed = 3f;
+    public float setRunSpeed = 5f;
     public float jumpPower = 4f;
     public float gravity = 10f;
     public float lookSpeed = 2f;
@@ -17,19 +17,23 @@ public class PlayerMovement : MonoBehaviour
     public float defaultHeight = 2f;
     public float crouchHeight = 1f;
     public float crouchSpeed = 1.5f;
-
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
     private StaminaManager stamina;
     private bool canMove = true;
     private bool isRunning;
+    private float walkSpeed;
+    private float runSpeed;
+
     private void Awake()
     {
         stamina = GetComponent<StaminaManager>();
     }
     void Start()
     {
+        walkSpeed = setWalkSpeed;
+        runSpeed = setRunSpeed;
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -73,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 characterController.height = defaultHeight;
-                walkSpeed = 6f;
-                runSpeed = 12f;
+                walkSpeed = setWalkSpeed;
+                runSpeed = setRunSpeed;
             }
 
             characterController.Move(moveDirection * Time.deltaTime);

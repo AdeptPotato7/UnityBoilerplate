@@ -218,8 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 877369516796540512, guid: 2bfc619d7b9554e4ba7c17d475cb326e, type: 3}
   playerCamera: {fileID: 4970715601268225012}
-  walkSpeed: 0.1
-  runSpeed: 0.1
+  setWalkSpeed: 1.2
+  setRunSpeed: 2.2
   jumpPower: 4
   gravity: 10
   lookSpeed: 2
