@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Play()
     {
-        SceneManager.LoadScene("DaGame");
+        SceneManager.LoadScene("Ryans1");
     }
     public void Restart()
     {

@@ -8,15 +8,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     public Camera playerCamera;
-    public float walkSpeed = 6f;
-    public float runSpeed = 12f;
-    public float jumpPower = 7f;
+    public float walkSpeed = 3f;
+    public float runSpeed = 5;
+    public float jumpPower = 4f;
     public float gravity = 10f;
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
     public float defaultHeight = 2f;
     public float crouchHeight = 1f;
-    public float crouchSpeed = 3f;
+    public float crouchSpeed = 1.5f;
 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;

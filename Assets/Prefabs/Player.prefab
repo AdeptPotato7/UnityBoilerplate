@@ -58,7 +58,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 26.991467
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -216,17 +216,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482bfda02d9a26a4b886e5507c18df58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 877369516796540512, guid: 2bfc619d7b9554e4ba7c17d475cb326e, type: 3}
   playerCamera: {fileID: 4970715601268225012}
-  walkSpeed: 3
-  runSpeed: 12
-  jumpPower: 7
+  walkSpeed: 0.1
+  runSpeed: 0.1
+  jumpPower: 4
   gravity: 10
   lookSpeed: 2
   lookXLimit: 45
   defaultHeight: 2
   crouchHeight: 1
-  crouchSpeed: 3
+  crouchSpeed: 0.6
 --- !u!114 &4970715601666171439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,4 +244,4 @@ MonoBehaviour:
   regenRate: 10
   regenDelay: 2
   depletionRate: 20
-  Pb: {fileID: 0}
+  Pb: {fileID: 114769781544105922, guid: 5eefba205a58c8c4a937c97b87c185a3, type: 3}
