@@ -26,6 +26,7 @@ public class StaminaManager : MonoBehaviour
 
     private void Awake()
     {
+        Pb = FindObjectOfType<ProgressBar>();
         currentStamina = maxStamina;
         UpdateUi();
     }

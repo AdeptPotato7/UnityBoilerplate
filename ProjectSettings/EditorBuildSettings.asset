@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ryans1.unity
     guid: ed8a30df18bf21149ae2b7ce253d2924
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: e2cb366dcd3f15b4aaf794e615c9819f
   m_configObjects: {}

@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 4970715601666171431}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 13.68, y: 6.18, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4970715601268225011}
@@ -244,4 +244,4 @@ MonoBehaviour:
   regenRate: 10
   regenDelay: 2
   depletionRate: 20
-  Pb: {fileID: 114769781544105922, guid: 5eefba205a58c8c4a937c97b87c185a3, type: 3}
+  Pb: {fileID: 0}
