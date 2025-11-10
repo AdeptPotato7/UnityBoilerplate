@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float lookXLimit = 45f;
     public float defaultHeight = 2f;
     public float crouchHeight = 1f;
-    public float crouchSpeed = 1.5f;
+    public float crouchSpeed = 2f;
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
