@@ -22,4 +22,9 @@ public class MenuManager : MonoBehaviour
    {
         Time.timeScale = 1;
    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
 }

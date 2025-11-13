@@ -82,4 +82,15 @@ public class PlayerDetection : MonoBehaviour
         // Apply rotation around forward
         return rotation * direction;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player caught!");
+            // Game over UI
+               GameManager.instance.GameOver();
+        }
+    }
 }
+

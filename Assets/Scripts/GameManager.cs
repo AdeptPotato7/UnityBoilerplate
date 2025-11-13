@@ -1,12 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static GameManager instance
+    {
+        get; private set;
+    }
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public void Play()
     {
         SceneManager.LoadScene("Ryans1");
@@ -24,6 +40,10 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOverScreen");
     }
 
     public bool gamePaused = false;
