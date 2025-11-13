@@ -37,10 +37,16 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
+        if (gameManager.gamePaused)
+        {
+            return;
+        }
+
         HandleMovement();
 
         if (!gameManager.gamePaused)
@@ -82,15 +88,23 @@ public class PlayerMovement : MonoBehaviour
             }
 
             characterController.Move(moveDirection * Time.deltaTime);
+        }
+    }
+    private void LateUpdate() 
+    {
+        if (gameManager.gamePaused)
+        {
+            return;
+        }
 
-            if (canMove)
+        if (canMove && !gameManager.gamePaused)
             {
                 rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
                 rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
                 transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
             }
-        }
+        
     }
 
     private void HandleMovement()

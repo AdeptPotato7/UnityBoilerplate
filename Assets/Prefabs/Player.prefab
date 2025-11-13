@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482bfda02d9a26a4b886e5507c18df58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 877369516796540512, guid: 2bfc619d7b9554e4ba7c17d475cb326e, type: 3}
+  gameManager: {fileID: 0}
   playerCamera: {fileID: 4970715601268225012}
   setWalkSpeed: 1.2
   setRunSpeed: 2.2

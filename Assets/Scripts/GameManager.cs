@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             gamePaused = true;
             pauseMenu.SetActive(true);
+            
 
         }
         else if ((Input.GetKeyDown(KeyCode.Escape) && gamePaused == true))
