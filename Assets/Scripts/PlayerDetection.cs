@@ -83,9 +83,9 @@ public class PlayerDetection : MonoBehaviour
         return rotation * direction;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player caught!");
             // Game over UI

@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 0.5
+  speed: 1
   rayCount: 20
   coneAngle: 5
   drawDebug: 1
