@@ -11,7 +11,6 @@ public class EnemyPathing : MonoBehaviour
     bool seePlayer;
     bool hasPath;
     int[,] board;
-    public GameObject manager;
     bool startNextRoom;
     public float enemySpeed;
     Rigidbody rb;
@@ -21,7 +20,6 @@ public class EnemyPathing : MonoBehaviour
         seePlayer = false;
         hasPath = false;
         startNextRoom = true;
-        
         rb = GetComponent<Rigidbody>();
     }
 
@@ -40,7 +38,7 @@ public class EnemyPathing : MonoBehaviour
 
     void makePath()
     {
-        board = manager.GetComponent<MapMaker>().board;
+        board = GameObject.Find("GameManager").GetComponent<MapMaker>().getBoard();
         List<Vector2Int> openRooms = new List<Vector2Int>();
         for (int i = 0; i < board.GetLength(0); i++)
             for (int j = 0; j < board.GetLength(1); j++)
@@ -50,7 +48,7 @@ public class EnemyPathing : MonoBehaviour
 
         List<Vector2Int> pathList = BFS(openRooms[Random.Range(0, openRooms.Count)]);
 
-        path.Clear();
+        path = new Queue<Vector2Int>();
         foreach (var step in pathList)
             path.Enqueue(step);
     }
@@ -70,7 +68,7 @@ public class EnemyPathing : MonoBehaviour
                 startNextRoom = true;
             } else
             {
-                transform.LookAt(new Vector3(getPosFromRoom(nextRoom).x, 0, getPosFromRoom(nextRoom).y));
+                transform.LookAt(new Vector3(getPosFromRoom(nextRoom).x, transform.position.y, getPosFromRoom(nextRoom).y));
                 rb.AddForce(new Vector3(enemySpeed * Time.deltaTime, 0, 0));
             }
         }
@@ -121,7 +119,7 @@ public class EnemyPathing : MonoBehaviour
                 if (next.x < 0 || next.x >= width || next.y < 0 || next.y >= height)
                     continue;
 
-                if (board[next.x, next.y] == 0)
+                if (board[next.x, next.y] <= 1)
                     continue;
 
                 if (!visited[next.x, next.y])
@@ -132,26 +130,25 @@ public class EnemyPathing : MonoBehaviour
                 }
             }
         }
-
         return null;
     }
 
-    private static List<Vector2Int> ReconstructPath(
+    List<Vector2Int> ReconstructPath(
         Dictionary<Vector2Int, Vector2Int> cameFrom,
         Vector2Int start,
         Vector2Int end)
     {
-        List<Vector2Int> path = new List<Vector2Int>();
+        List<Vector2Int> pathL = new List<Vector2Int>();
         Vector2Int current = end;
 
         while (current != start)
         {
-            path.Add(current);
+            pathL.Add(current);
             current = cameFrom[current];
         }
 
-        path.Add(start);
-        path.Reverse();
-        return path;
+        pathL.Add(start);
+        pathL.Reverse();
+        return pathL;
     }
 }
