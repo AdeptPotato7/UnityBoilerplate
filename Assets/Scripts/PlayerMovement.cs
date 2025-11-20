@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isRunning;
     private float walkSpeed;
     private float runSpeed;
-
+    
     private void Awake()
     {
         stamina = GetComponent<StaminaManager>();
