@@ -8,7 +8,7 @@ public class EnemyPathing : MonoBehaviour
 {
     Queue<Vector2Int> path;
     Vector2Int nextRoom;
-    bool seePlayer;
+    public bool seePlayer;
     bool hasPath;
     int[,] board;
     bool startNextRoom;
@@ -34,6 +34,9 @@ public class EnemyPathing : MonoBehaviour
         {
             followPath();
         }
+
+        if (seePlayer)
+            attackPlayer();
     }
 
     void makePath()
@@ -156,5 +159,10 @@ public class EnemyPathing : MonoBehaviour
         pathL.Add(start);
         pathL.Reverse();
         return pathL;
+    }
+
+    void attackPlayer()
+    {
+        
     }
 }
