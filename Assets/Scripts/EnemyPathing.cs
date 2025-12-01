@@ -68,15 +68,17 @@ public class EnemyPathing : MonoBehaviour
                 startNextRoom = true;
             } else
             {
-                transform.LookAt(new Vector3(getPosFromRoom(nextRoom).x, transform.position.y, getPosFromRoom(nextRoom).y));
-                rb.AddForce(new Vector3(enemySpeed * Time.deltaTime, 0, 0));
+                //Debug.LogError(nextRoom.x + ", " + nextRoom.y);
+                transform.LookAt(new Vector3(getPosFromRoom(nextRoom).y, transform.position.y, getPosFromRoom(nextRoom).x));
+                rb.AddRelativeForce(new Vector3(0, 2, enemySpeed));
             }
         }
     }
 
     Vector2Int getRoomFromPos(Vector2 location)
     {
-        return new Vector2Int(Mathf.RoundToInt(location.x / 10) + 5, Mathf.RoundToInt(location.y / 10) + 5);
+        //return new Vector2Int(Mathf.RoundToInt(location.x / 10) + 5, Mathf.RoundToInt(location.y / 10) + 5);
+        return new Vector2Int(Mathf.RoundToInt(location.y / 10) + 5, Mathf.RoundToInt(location.x / 10) + 5);
     }
 
     Vector2 getPosFromRoom(Vector2Int room)
@@ -86,6 +88,7 @@ public class EnemyPathing : MonoBehaviour
 
     List<Vector2Int> BFS(Vector2Int target)
     {
+        Debug.LogError(target.x + ", " + target.y);
         int width = board.GetLength(0);
         int height = board.GetLength(1);
 
@@ -93,7 +96,7 @@ public class EnemyPathing : MonoBehaviour
         Dictionary<Vector2Int, Vector2Int> cameFrom = new Dictionary<Vector2Int, Vector2Int>();
 
         Vector2Int start = getRoomFromPos(new Vector2(transform.position.x, transform.position.z));
-
+        //Debug.LogError(start.x + ", " + start.y);
         Queue<Vector2Int> queue = new Queue<Vector2Int>();
         queue.Enqueue(start);
         visited[start.x, start.y] = true;
@@ -110,10 +113,13 @@ public class EnemyPathing : MonoBehaviour
             var current = queue.Dequeue();
 
             if (current == target)
+            {
+                //Debug.LogError("Path");
                 return ReconstructPath(cameFrom, start, target);
-
+            }
             foreach (var d in dirs)
             {
+
                 var next = current + d;
 
                 if (next.x < 0 || next.x >= width || next.y < 0 || next.y >= height)

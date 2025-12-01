@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9088670628201297363}
   - component: {fileID: 2335763468146545343}
   - component: {fileID: 1412589008490438605}
+  - component: {fileID: -6773277102347794145}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -49,7 +50,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!33 &9088670628201297363
 MeshFilter:
@@ -112,6 +113,19 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-6773277102347794145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112339778553293397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefc9904b455f4c40bfbcd9b8b9f9c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpeed: 10
