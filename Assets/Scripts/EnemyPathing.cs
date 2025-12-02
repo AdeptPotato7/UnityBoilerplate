@@ -14,9 +14,13 @@ public class EnemyPathing : MonoBehaviour
     bool startNextRoom;
     public float enemySpeed;
     Rigidbody rb;
+    public GameObject player;
+    public float detectionLingerTime;
+    private float detectedFor;
     
     void Start()
     {
+        detectedFor = 0f;
         seePlayer = false;
         hasPath = false;
         startNextRoom = true;
@@ -25,18 +29,26 @@ public class EnemyPathing : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!seePlayer && !hasPath)
+        detectedFor -= Time.deltaTime;
+        if (seePlayer)
         {
-            makePath();
-            hasPath = true;
-        }
-        if (!seePlayer && hasPath)
-        {
-            followPath();
+            hasPath = false;
+            startNextRoom = true;
+            seePlayer = false;
+            detectedFor = detectionLingerTime;
         }
 
-        if (seePlayer)
+        if (detectedFor > 0)
             attackPlayer();
+        else {
+            if (!hasPath)
+            {
+                makePath();
+                hasPath = true;
+            } else
+                followPath();
+        }
+        
     }
 
     void makePath()
@@ -163,6 +175,8 @@ public class EnemyPathing : MonoBehaviour
 
     void attackPlayer()
     {
-        
+        Debug.LogError("Attack");
+        transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+        rb.AddRelativeForce(new Vector3(0, 2, enemySpeed));
     }
 }

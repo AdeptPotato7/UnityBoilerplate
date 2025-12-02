@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -8685936187546179386}
   - component: {fileID: 566275156555433119}
   - component: {fileID: 7902615030617858228}
+  - component: {fileID: -532374853179316602}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -139,7 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefc9904b455f4c40bfbcd9b8b9f9c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 10
+  seePlayer: 0
+  enemySpeed: 12
+  player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
+  detectionLingerTime: 1
 --- !u!114 &-6665625113028626231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277faf12d2e1e49408f16e38271ddb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayDistance: 10
   player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
-  speed: 0.2
   rayCount: 20
   coneAngle: 10
   drawDebug: 1
@@ -169,8 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277faf12d2e1e49408f16e38271ddb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayDistance: 10
   player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
-  speed: 0.2
   rayCount: 20
   coneAngle: 15
   drawDebug: 1
@@ -186,8 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277faf12d2e1e49408f16e38271ddb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayDistance: 10
   player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
-  speed: 0.2
   rayCount: 20
   coneAngle: 25
   drawDebug: 1
@@ -203,10 +207,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277faf12d2e1e49408f16e38271ddb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayDistance: 10
   player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
-  speed: 0.2
   rayCount: 15
   coneAngle: 5
+  drawDebug: 1
+--- !u!114 &-532374853179316602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112339778553293397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277faf12d2e1e49408f16e38271ddb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayDistance: 50
+  player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
+  rayCount: 1
+  coneAngle: 0
   drawDebug: 1
 --- !u!1 &1329270004494642692
 GameObject:

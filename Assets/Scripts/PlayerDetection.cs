@@ -6,14 +6,13 @@ public class PlayerDetection : MonoBehaviour
 {
     Ray ray;
     RaycastHit Hit;
-    float rayDistance = 10f;
+    public float rayDistance = 10f;
     public GameObject player;
     private Rigidbody rb;
-    public float speed = 0.2f;
     public int rayCount = 20;
     public float coneAngle = 30f;
     public bool drawDebug = true;
-    private Component pathingScript;
+    private EnemyPathing pathingScript;
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -36,9 +35,7 @@ public class PlayerDetection : MonoBehaviour
 
         // Move towards player if detected
         if (playerDetected)
-        {
-            //pathingScript.seePlayer = false;
-        }
+            pathingScript.seePlayer = true;
     }
 
     bool ConeRaycast(Vector3 forward)
