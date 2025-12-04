@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,18 +7,17 @@ public class PlayerDetection : MonoBehaviour
 {
     Ray ray;
     RaycastHit Hit;
-    public float rayDistance = 10f;
+    float rayDistance = 10f;
     public GameObject player;
     private Rigidbody rb;
+    public float speed = 0.2f;
     public int rayCount = 20;
     public float coneAngle = 30f;
     public bool drawDebug = true;
-    private EnemyPathing pathingScript;
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody>();
-        pathingScript = this.GetComponent<EnemyPathing>();
     }
 
 
@@ -35,7 +35,9 @@ public class PlayerDetection : MonoBehaviour
 
         // Move towards player if detected
         if (playerDetected)
-            pathingScript.seePlayer = true;
+        {
+            rb.velocity = direction * speed;
+        }
     }
 
     bool ConeRaycast(Vector3 forward)
@@ -50,9 +52,9 @@ public class PlayerDetection : MonoBehaviour
                 Debug.DrawRay(transform.position, rayDirection * rayDistance, Color.yellow);
             }
 
-            if (Physics.Raycast(transform.position, rayDirection, out Hit))
+            if (Physics.Raycast(transform.position, rayDirection, out Hit, rayDistance))
             {
-                if (Hit.collider.gameObject.GetComponent<PlayerMovement>()!=null)
+                if (Hit.collider.CompareTag("Player"))
                 {
                     return true;
                 }
