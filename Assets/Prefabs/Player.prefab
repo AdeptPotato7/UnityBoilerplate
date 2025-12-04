@@ -252,7 +252,7 @@ MonoBehaviour:
   playerCamera: {fileID: 4970715601268225012}
   setWalkSpeed: 1.5
   setRunSpeed: 2.2
-  jumpPower: 4
+  jumpPower: 3.5
   gravity: 10
   lookSpeed: 1.5
   lookXLimit: 45

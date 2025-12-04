@@ -224,7 +224,7 @@ public class EnemyPathing : MonoBehaviour
    void attackPlayer()
    {
        Debug.LogError("Attack");
-       transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+       transform.LookAt(new Vector3(GameObject.FindGameObjectWithTag("Player").transform.position.x, transform.position.y, GameObject.FindGameObjectWithTag("Player").transform.position.z));
        rb.AddRelativeForce(new Vector3(0, 2, enemySpeed));
    }
 }
