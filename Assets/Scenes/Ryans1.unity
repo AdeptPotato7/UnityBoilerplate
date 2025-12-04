@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 854924992}
   - component: {fileID: 854924991}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Background Horror Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
