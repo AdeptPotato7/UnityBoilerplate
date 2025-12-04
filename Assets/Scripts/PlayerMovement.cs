@@ -35,11 +35,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isRunning;
     private float walkSpeed;
     private float runSpeed;
+<<<<<<< HEAD
 
     // Headbob variables
     private float bobTimer = 0f;
     private Vector3 cameraDefaultPos;
 
+=======
+    
+>>>>>>> origin/master
     private void Awake()
     {
         stamina = GetComponent<StaminaManager>();
