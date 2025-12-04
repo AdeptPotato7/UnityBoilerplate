@@ -142,7 +142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seePlayer: 0
   enemySpeed: 12
-  player: {fileID: 4970715601666171431, guid: adf561220889bcc40b76ff2336a7330f, type: 3}
   detectionLingerTime: 1
 --- !u!114 &-6665625113028626231
 MonoBehaviour:

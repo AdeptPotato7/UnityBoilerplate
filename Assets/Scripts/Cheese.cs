@@ -10,7 +10,7 @@ public class Cheese : MonoBehaviour
 
     private void Start()
     {
-        manager = GameObject.Find("CheeseManager");
+        manager = GameObject.Find("GameManager");
     }
 
     void OnTriggerEnter(Collider other)
