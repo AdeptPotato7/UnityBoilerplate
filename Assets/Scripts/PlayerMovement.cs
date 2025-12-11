@@ -108,9 +108,12 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                characterController.height = defaultHeight;
-                walkSpeed = setWalkSpeed;
-                runSpeed = setRunSpeed;
+                if (!GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyPathing>().playerHiding)
+                {
+                    characterController.height = defaultHeight;
+                    walkSpeed = setWalkSpeed;
+                    runSpeed = setRunSpeed;
+                }
             }
 
             characterController.Move(moveDirection * Time.deltaTime);

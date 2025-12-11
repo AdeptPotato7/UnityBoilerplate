@@ -12,6 +12,7 @@ public class MapMaker : MonoBehaviour {
     public GameObject noRoom;
     public GameObject EmptyRoom;
     public GameObject baseEnemyRoom;
+    public GameObject holeWall;
 
     public int modifiableX;
     public int modifiableZ;
@@ -22,13 +23,13 @@ public class MapMaker : MonoBehaviour {
     int[,] board = {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 3, 2, 2, 2, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0 },
-            { 0, 0, 2, 0, 2, 2, 2, 0, 0, 0, 0 },
+            { 0, 0, 2, 4, 2, 2, 2, 0, 0, 0, 0 },
             { 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
         };
@@ -39,7 +40,7 @@ public class MapMaker : MonoBehaviour {
         Z = modifiableZ;
         startX = -10 * (X / 2);
         startZ = -10 * (Z / 2);
-        rooms = new GameObject[] { noRoom, spawn, EmptyRoom, baseEnemyRoom };
+        rooms = new GameObject[] { noRoom, spawn, EmptyRoom, baseEnemyRoom, holeWall };
         
         //board = new int[X, Z];
         makeMap();
@@ -49,13 +50,13 @@ public class MapMaker : MonoBehaviour {
         //board = new int[,] {
         //    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
         //    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        //    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    { 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0 },
         //    { 0, 0, 0, 0, 3, 2, 2, 2, 0, 0, 0 },
         //    { 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0 },
         //    { 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0 },
-        //    { 0, 0, 2, 0, 2, 2, 2, 0, 0, 0, 0 },
+        //    { 0, 0, 2, 4, 2, 2, 2, 0, 0, 0, 0 },
         //    { 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0 },
-        //    { 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0 },
+        //    { 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, 0 },
         //    { 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0 },
         //    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
         //};

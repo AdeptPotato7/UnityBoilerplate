@@ -1528,6 +1528,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 18354136}
+    - target: {fileID: 877369516796540515, guid: 2bfc619d7b9554e4ba7c17d475cb326e, type: 3}
+      propertyPath: holeWall
+      value: 
+      objectReference: {fileID: 3052209126661344979, guid: 78a43ecf31e80294caae1418b98e138f, type: 3}
     - target: {fileID: 877369516796540524, guid: 2bfc619d7b9554e4ba7c17d475cb326e, type: 3}
       propertyPath: m_Name
       value: GameManager

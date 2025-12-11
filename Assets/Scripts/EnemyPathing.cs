@@ -20,9 +20,11 @@ public class EnemyPathing : MonoBehaviour
    private float detectedFor;
    private Vector2Int lastSeen;
    private bool seenRecently;
+   public bool playerHiding;
   
    void Start()
    {
+       playerHiding = false;
        detectedFor = 0f;
        seePlayer = false;
        hasPath = false;
@@ -47,13 +49,18 @@ public class EnemyPathing : MonoBehaviour
            detectedFor = detectionLingerTime;
        }
 
+       if (playerHiding)
+       {
+           detectedFor = 0;
+           seenRecently = false;
+       }
 
        if (detectedFor > 0)
            attackPlayer();
        else {
            if (!hasPath)
            {
-               if (seenRecently && board[lastSeen.x, lastSeen.y] > 1)
+               if (seenRecently && board[lastSeen.x, lastSeen.y] > 1 && board[lastSeen.x, lastSeen.y] < 4)
                {
                    makePath(lastSeen);
                    seenRecently = false;
@@ -182,7 +189,7 @@ public class EnemyPathing : MonoBehaviour
                    continue;
 
 
-               if (board[next.x, next.y] <= 1)
+               if (board[next.x, next.y] <= 1 || board[next.x, next.y] >= 4)
                    continue;
 
 

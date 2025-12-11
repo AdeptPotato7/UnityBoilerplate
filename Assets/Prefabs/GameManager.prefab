@@ -65,6 +65,7 @@ MonoBehaviour:
   noRoom: {fileID: 3540048890004425043, guid: 6bb8c46a2cc32b145b71535df3dd57b5, type: 3}
   EmptyRoom: {fileID: 3052209126661344979, guid: b0d238c0c6ff2594cb991bf9e3408a3a, type: 3}
   baseEnemyRoom: {fileID: 3052209126661344979, guid: 98f6044b5b411e044b1eb5ba98ed823d, type: 3}
+  holeWall: {fileID: 3052209126661344979, guid: 78a43ecf31e80294caae1418b98e138f, type: 3}
   modifiableX: 11
   modifiableZ: 11
 --- !u!114 &1758186004616007856
